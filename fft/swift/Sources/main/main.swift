@@ -20,7 +20,7 @@ func generateInputs(len: Int) -> [Complex] {
 
 let args = CommandLine.arguments
 guard args.count > 1, let size = Int(args[1]) else {
-  fputs("usage: \(args.first ?? "prog") <size>\n", stderr)
+  FileHandle.standardError.write(Data("usage: \(args.first ?? "prog") <size>\n".utf8))
   exit(1)
 }
 let len = 1 << size
